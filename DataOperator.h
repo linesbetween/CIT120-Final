@@ -1,4 +1,4 @@
-//Operates data in data.h
+//Operates data loaded from file or generated during running
 //DataOperator.h
 //Hanfei Xu
 //May 02 2016
@@ -7,14 +7,33 @@
 #define DATAOPERATOR_H
 #include <iostream>
 #include <iomanip>
-#include "Data.h"
+//#include "Data.h"
 using namespace std;
 
+// add user input entry into parallel arrays
+void addEntry(int dayArr[], int cataCodeArr[], double amountArr[], int& actualSize, int CAP, int day, int code, double amount);
+
 void initDailySum(double dailySumArr[], int numOfDays);
+
 // calcualte for all elements the whole dailySumArr
-void calcDailySum(int dayArr[], double amountArr[], int numOfEntries, double dailySumArr[], int numOfDays);
+void calcDailySum(const int dayArr[], const double amountArr[], int numOfEntries, double dailySumArr[], int numOfDays);
+
 // update certain day/element in dailySumArr
 void updateDailySum(int dailySumArr[], int day);
+
+void calcCataSum(const int cataCodeArr[], const double amountArr[], int numOfEntries, double catagorySumArr[], int numOfCatas);
+
+void printCataSum(double catagorySumArr[], int catas);
+
+
+void addEntry(int dayArr[], int cataCodeArr[], double amountArr[], int& actualSize, int CAP, int day, int code, double amount){
+	if (actualSize < CAP){ //TODO deal with too many entires
+		dayArr[actualSize] = day;
+		cataCodeArr[actualSize] = code;
+		amountArr[actualSize] = amount;
+		++actualSize;
+	}
+}
 
 
 void initDailySum(double dailySumArr[], int numOfDays){
@@ -22,7 +41,7 @@ void initDailySum(double dailySumArr[], int numOfDays){
 		dailySumArr[i] = 0;
 }
 
-void calcDailySum(int dayArr[], double amountArr[], int numOfEntries, double dailySumArr[], int numOfDays){
+void calcDailySum(const int dayArr[], const double amountArr[], int numOfEntries, double dailySumArr[], int numOfDays){
 	int date;
 
 	for (int i = 0; i < numOfEntries; ++i){
@@ -32,7 +51,7 @@ void calcDailySum(int dayArr[], double amountArr[], int numOfEntries, double dai
 
 }
 
-void updateDailySum(int dayArr[], double amountArr[],double dailySumArr[], int day){
+void updateDailySum(int dayArr[], double amountArr[], double dailySumArr[], int numOfEntries, int day){
 	for (int i = 0; i < numOfEntries; ++i){
 		if (day == dayArr[i])
 			dailySumArr[day - 1] += amountArr[i];
@@ -51,7 +70,7 @@ void initCataSum(double catagorySumArr[], int numOfCata){
 		catagorySumArr[i] = 0;
 }
 
-void calcCataSum(int cataCodeArr[], double amountArr[], int numOfEntries, double catagorySumArr[], int numOfCatas){
+void calcCataSum(const int cataCodeArr[], const double amountArr[], int numOfEntries, double catagorySumArr[], int numOfCatas){
 	int code;
 
 	for (int i = 0; i < numOfEntries; ++i){
@@ -65,7 +84,7 @@ void calcCataSum(int cataCodeArr[], double amountArr[], int numOfEntries, double
 void printCataSum(double catagorySumArr[], int catas){
 	cout << "\n\n";
 	for (int i = 0; i < catas; ++i)
-		cout << setw(4) << i + 1 << setw(8) << dailySumArr[i] << endl;
+		cout << setw(4) << i + 1 << setw(8) << catagorySumArr[i] << endl;
 	cout << "\n";
 }
 

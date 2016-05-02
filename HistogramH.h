@@ -9,7 +9,7 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
-#include "Data.h"
+//#include "Data.h"
 using namespace std;
 
 //xArr[] contains values of items (x axis), posivtive doubles; sizeX contains number items (y axis), positive int.
@@ -18,7 +18,7 @@ void printHistogramH(double xArr[], int sizeX, double xUnit, string xLabel = "",
 double findMax(double xArr[], int xSize);
 
 
-void printHistogramH(double xArr[], int sizeX, double xUnit, string xLabel, string yLabel ){
+void printHistogramH(double xArr[], int sizeX, double xUnit, string xLabel, string yLabel ){ //TODO label, label array
 	// print x axis with scale
 	double maxX = findMax(xArr, sizeX);
 

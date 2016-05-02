@@ -20,18 +20,23 @@ double amountArr[CAP];
 // loaded from the same file as user data entries, at beginning of file
 double monthBudget;
 
-// store if each day has data entry, for display on calendar, loaded from another file
+
 const int DAY366 = 366; // 366 days in 2016
-int calendarDay[DAY366];
+//int dailyChecker[DAY366]; // checkers if each day has data entry, for display on calendar, loaded from another file
+double dailySpend[DAY366];// store each day's spending, for display on calendar, loaded from another file 
 
 /*********************Data created at run time*/
-const string dataFileNameArr[] = { "JanuaryData.txt", "FebruaryData.txt", "MarchData.txt", "AprilData.txt", "MayData.txt",
+const string DATA_FILE_NAME[] = { 
+	"JanuaryData.txt", 
+	"FebruaryData.txt", "MarchData.txt", "AprilData.txt", "MayData.txt",
 "JuneData.txt", "JulyData.txt", "AuguestData.txt", "SeptemberData.txt", "OctoberData.txt",
 "NovemberData.txt", "DecemberData.txt" };
 
 int currentMonth, currentDay;
 double currentBalance;
 int numOfEntries;
+int firstDayOfMonthYearIndex;
+
 const int MAX_DAYS_IN_MONTH = 31;
 double dailySumArr[MAX_DAYS_IN_MONTH]; 
 const int NUM_OF_CATAGORY = 4;

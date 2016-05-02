@@ -1,14 +1,14 @@
-//Print monthly calendar of 2016 
-//Utility.h
-//Hanfei Xu
-//May 02 2016
+// Print monthly calendar of 2016 
+// Utility.h
+// Hanfei Xu
+// May 02 2016
 
-#ifndef UTILITY_H
-#define UTILITY_H
+#ifndef CALENDAR_H
+#define CALENDAR_H
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include "Data.h"
+//#include "Data.h"
 using namespace std;
 
 const string monthName[] = { "January", "February", "March", "April", "May", "June", "July",
@@ -27,33 +27,33 @@ int getDayOfYear(int month, int day);
 // return INDEX in calendarDay array
 
 // get month number (1-12) //ONLY for 2016
-void printMontlyCalendar(int month);
+void printMontlyCalendar(int month, const double dailySpend[]);
 
 
-void printMontlyCalendar(int month){ 
-	const int WID_COL = 6, WID_SIGN = 3;
+void printMontlyCalendar(int month, const double dailySpend[]){ 
+	const int WID_COL = 4, WID_NUM = 7;
 	int offset = offsetInMonth[month - 1];  
 	int daysInMonth = numOfDaysInMonth[month - 1];
 	int dayOfYear;
 	
-	cout <<"\n\n\t\t\t"<< monthName[month - 1] << "    2016 \n\n";
+	cout <<"\n\n\t\t\t\t\t"<< monthName[month - 1] << "    2016 \n\n";
 
 	//print table title 
 	cout << left;
 	for (int i = 1; i <= 7; ++i){
-		cout << setw(WID_COL + WID_SIGN) << weekdayName[i - 1];
-		//cout << setw(WID_SIGN) << char(251);
+		cout << setw(WID_COL + WID_NUM + 2) << weekdayName[i - 1];
+		//cout << setw(WID_NUM) << char(251);
 	}
 	cout << "\n";
 
 	//print days 
 	for (int i = 1; i <= (daysInMonth + offset); ++i){
 		if (i <= offset)
-			cout << setw(WID_COL + WID_SIGN) << "";
+			cout << setw(WID_COL + WID_NUM + 2) << "";
 		
 		else{
 			dayOfYear = getDayOfYear(month, i - offset);
-			cout << setw(WID_COL) << i - offset << setw(WID_SIGN) << (calendarDay[dayOfYear] == 1 ? char(251) : ' '); 
+			cout <<"|"<< setw(WID_COL) << i - offset << "$" << setw(WID_NUM) << dailySpend[dayOfYear] ;
 			if (i % 7 == 0)
 				cout << "\n";
 		}

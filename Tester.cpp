@@ -1,53 +1,66 @@
-#include "Utility.h"
+#include "Calendar2016.h"
 #include "FileOperator.h"
 #include "DataOperator.h"
 #include "HistogramH.h"
-#include "Data.h"
+#include "InputValidation.h"
+#include "Data.h"    // const declarations
 #include <fstream>
+
+
+void initialDailySpendFile();
+
 void main(){
 
-	/*
-	// initialize test numbers in 
-	ofstream file;
-	file.open("RecordTrack.txt", ios::out | ios::trunc);
-
-	for (int i = 1; i <=91; ++i){
-		file << 0 <<" ";
-	}
-
-	for (int i = 92; i <= 118; ++i){
-		file << 1 << " ";
-	}
-
-	for (int i = 119; i <= 366; ++i){
-		file << 0 << " ";
-	}
-
+	//initialDailySpendFile();
+	fstream file;
+	file.open("DailySpend.txt", ios::in);
+	loadDailySpend(file, dailySpend, DAY366);
 	file.close();
-	*/
 
-	ifstream tracker;
-	tracker.open("DailyChecker.txt", ios::in);
+	printMontlyCalendar(3,dailySpend);
+	printMontlyCalendar(4, dailySpend);
+	printMontlyCalendar(5, dailySpend);
 
-	for (int i = 0; i < 366; ++i){
-		tracker >> calendarDay[i];
-	}
-
-	tracker.close();
-
-	printMontlyCalendar(3);
-	printMontlyCalendar(4);
-	printMontlyCalendar(5);
-
+	//load entries from file
 	ifstream dataFile;
-	dataFile.open(dataFileNameArr[3]);
+	dataFile.open(DATA_FILE_NAME[3]);
 	numOfEntries = loadMonthData(dataFile, monthBudget, dayArr, cataCodeArr, amountArr, CAP);
+	cout << "\n\n Num of entries " << numOfEntries << "\n";
 	printMonthDataArrays(monthBudget, dayArr, cataCodeArr, amountArr, numOfEntries, cout);
 	dataFile.close();
 
+	//add an entrie
+	addEntry(dayArr, cataCodeArr, amountArr, numOfEntries, CAP, 29, 1, 10);
+	printMonthDataArrays(monthBudget, dayArr, cataCodeArr, amountArr, numOfEntries, cout);
+
+
+	// calculate daily spend
 	initDailySum(dailySumArr, MAX_DAYS_IN_MONTH);
 	calcDailySum(dayArr, amountArr, numOfEntries, dailySumArr, MAX_DAYS_IN_MONTH);
 	printDailySum(dailySumArr, numOfDaysInMonth[3]);
+
+	//update dailyspend array 
+	firstDayOfMonthYearIndex = firstDayOfMonthInYear(4);
+	for (int i = firstDayOfMonthYearIndex; i < firstDayOfMonthYearIndex + numOfDaysInMonth[3]; ++i){
+		dailySpend[i] = dailySumArr[i - firstDayOfMonthYearIndex];
+	}
+
+	//update dailyspend file
+	fstream dailySpendfile;
+	dailySpendfile.open("DailySpend.txt", ios::out);
+	writeDailySpend(dailySpendfile, dailySpend, numOfDaysInMonth[3]);
+	dailySpendfile.close();
+
+	//reload dailyspend file
+	dailySpendfile.open("DailySpend.txt", ios::in);
+	loadDailySpend(dailySpendfile, dailySpend, numOfDaysInMonth[3]);
+	dailySpendfile.close();
+	
+	//reprint calendar.
+	printMontlyCalendar(3, dailySpend);
+	printMontlyCalendar(4, dailySpend);
+	printMontlyCalendar(5, dailySpend);
+
 
 	initCataSum(catagorySumArr, NUM_OF_CATAGORY);
 	calcCataSum(cataCodeArr, amountArr, numOfEntries, catagorySumArr, NUM_OF_CATAGORY);
@@ -58,4 +71,15 @@ void main(){
 	cout << "\n\n";
 	system("pause");
 
+}
+
+void initialDailySpendFile(){
+	ofstream file;
+	file.open("DailySpend.txt", ios::out | ios::trunc);
+
+	for (int i = 1; i <= 366; ++i){
+		file << 0 <<" ";
+	}
+
+	file.close();
 }

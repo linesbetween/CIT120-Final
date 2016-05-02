@@ -68,14 +68,15 @@
     <ClInclude Include="DataOperator.h" />
     <ClInclude Include="FileOperator.h" />
     <ClInclude Include="HistogramH.h" />
-    <ClInclude Include="Utility.h" />
+    <ClInclude Include="InputValidation.h" />
+    <ClInclude Include="Calendar2016.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="AprilData.txt" />
-    <Text Include="DailyChecker.txt" />
+    <Text Include="DailySpend.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Tester.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
