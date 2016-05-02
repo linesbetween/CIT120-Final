@@ -67,6 +67,7 @@
     <ClInclude Include="Data.h" />
     <ClInclude Include="DataOperator.h" />
     <ClInclude Include="FileOperator.h" />
+    <ClInclude Include="HistogramH.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>

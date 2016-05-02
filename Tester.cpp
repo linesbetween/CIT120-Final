@@ -1,6 +1,7 @@
 #include "Utility.h"
 #include "FileOperator.h"
 #include "DataOperator.h"
+#include "HistogramH.h"
 #include "Data.h"
 #include <fstream>
 void main(){
@@ -51,6 +52,8 @@ void main(){
 	initCataSum(catagorySumArr, NUM_OF_CATAGORY);
 	calcCataSum(cataCodeArr, amountArr, numOfEntries, catagorySumArr, NUM_OF_CATAGORY);
 	printDailySum(catagorySumArr, NUM_OF_CATAGORY);
+
+	printHistogramH(catagorySumArr, 4, 10);
 
 	cout << "\n\n";
 	system("pause");

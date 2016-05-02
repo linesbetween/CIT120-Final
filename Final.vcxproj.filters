@@ -27,6 +27,9 @@
     <ClInclude Include="DataOperator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HistogramH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="AprilData.txt">
