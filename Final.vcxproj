@@ -65,14 +65,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Data.h" />
+    <ClInclude Include="DataOperator.h" />
+    <ClInclude Include="FileOperator.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Tester.cpp" />
+    <Text Include="AprilData.txt" />
+    <Text Include="DailyChecker.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="RecordTrack.txt" />
-    <Text Include="UserData.txt" />
+    <ClCompile Include="Tester.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

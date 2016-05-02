@@ -1,3 +1,8 @@
+//Print monthly calendar of 2016 
+//Utility.h
+//Hanfei Xu
+//May 02 2016
+
 #ifndef UTILITY_H
 #define UTILITY_H
 #include <iostream>
@@ -6,19 +11,28 @@
 #include "Data.h"
 using namespace std;
 
-string monthName[] = { "January", "February", "March", "April", "May", "June", "July",
+const string monthName[] = { "January", "February", "March", "April", "May", "June", "July",
 						"Auguest", "September", "October", "November", "December" };
-string weekdayName[] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
-int numOfDaysInMonth[] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-int offsetMonth[] = { 5, 1, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 }; // offset from Sunday for first day of each month
+const string weekdayName[] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+const int numOfDaysInMonth[] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-int firstDayOfMonthInYear(int month);// first day of each month's INDEX in calendarDay array 
-int getDayOfYear(int month, int day);
+const int offsetInMonth[] = { 5, 1, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 }; // offset from Sunday for first day of each month
+
+// get month number (1-12)
+int firstDayOfMonthInYear(int month);
+// return first day of each month's INDEX in calendarDay array 
+
+// get month number (1-12) and day (1-31)
+int getDayOfYear(int month, int day); 
+// return INDEX in calendarDay array
+
+// get month number (1-12) //ONLY for 2016
 void printMontlyCalendar(int month);
 
-void printMontlyCalendar(int month){ //ONLY for 2016
+
+void printMontlyCalendar(int month){ 
 	const int WID_COL = 6, WID_SIGN = 3;
-	int offset = offsetMonth[month - 1];  
+	int offset = offsetInMonth[month - 1];  
 	int daysInMonth = numOfDaysInMonth[month - 1];
 	int dayOfYear;
 	
@@ -39,7 +53,7 @@ void printMontlyCalendar(int month){ //ONLY for 2016
 		
 		else{
 			dayOfYear = getDayOfYear(month, i - offset);
-			cout << setw(WID_COL) << i - offset << setw(WID_SIGN) << (calendarDay[dayOfYear] == 1 ? char(251) : ' ');
+			cout << setw(WID_COL) << i - offset << setw(WID_SIGN) << (calendarDay[dayOfYear] == 1 ? char(251) : ' '); 
 			if (i % 7 == 0)
 				cout << "\n";
 		}
@@ -57,13 +71,15 @@ int firstDayOfMonthInYear(int month){
 	return position;
 }
 
+
 int getDayOfYear(int month, int day){
 	int dayInYear = 0;
 
 	dayInYear += firstDayOfMonthInYear(month);
-	dayInYear += day;
+	dayInYear += day-1;
 
 	return dayInYear;
 }
+
 
 #endif
