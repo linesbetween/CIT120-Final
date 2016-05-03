@@ -58,9 +58,9 @@ int getIntGreater(int min){ // done
 int getIntRange(int min, int max){  // done
 	int num = getInt();
 
-	while (num < 0 || num > 100){
-		cout << "\t discount has to be "
-			<< (num < 0 ? "positive" : "less than 100")
+	while (num < min || num > max){
+		cout << "\t Input has to be between"
+			<< min << " and "<< max
 			<< ". Please try again: ";
 		num = getInt();
 	}

@@ -9,7 +9,7 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
-//#include "Data.h"
+
 using namespace std;
 
 //xArr[] contains values of items (x axis), posivtive doubles; sizeX contains number items (y axis), positive int.

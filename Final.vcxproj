@@ -64,19 +64,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Data.h" />
     <ClInclude Include="DataOperator.h" />
     <ClInclude Include="FileOperator.h" />
     <ClInclude Include="HistogramH.h" />
     <ClInclude Include="InputValidation.h" />
     <ClInclude Include="Calendar2016.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="AprilData.txt" />
     <Text Include="DailySpend.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MoneyTrackerMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

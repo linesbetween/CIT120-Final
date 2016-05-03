@@ -37,23 +37,23 @@ void main(){
 	// calculate daily spend
 	initDailySum(dailySumArr, MAX_DAYS_IN_MONTH);
 	calcDailySum(dayArr, amountArr, numOfEntries, dailySumArr, MAX_DAYS_IN_MONTH);
-	printDailySum(dailySumArr, numOfDaysInMonth[3]);
+	printDailySum(dailySumArr, NUM_OF_DAYS_MONTH[3]);
 
 	//update dailyspend array 
 	firstDayOfMonthYearIndex = firstDayOfMonthInYear(4);
-	for (int i = firstDayOfMonthYearIndex; i < firstDayOfMonthYearIndex + numOfDaysInMonth[3]; ++i){
+	for (int i = firstDayOfMonthYearIndex; i < firstDayOfMonthYearIndex + NUM_OF_DAYS_MONTH[3]; ++i){
 		dailySpend[i] = dailySumArr[i - firstDayOfMonthYearIndex];
 	}
 
 	//update dailyspend file
 	fstream dailySpendfile;
 	dailySpendfile.open("DailySpend.txt", ios::out);
-	writeDailySpend(dailySpendfile, dailySpend, numOfDaysInMonth[3]);
+	writeDailySpend(dailySpendfile, dailySpend, NUM_OF_DAYS_MONTH[3]);
 	dailySpendfile.close();
 
 	//reload dailyspend file
 	dailySpendfile.open("DailySpend.txt", ios::in);
-	loadDailySpend(dailySpendfile, dailySpend, numOfDaysInMonth[3]);
+	loadDailySpend(dailySpendfile, dailySpend, NUM_OF_DAYS_MONTH[3]);
 	dailySpendfile.close();
 	
 	//reprint calendar.
