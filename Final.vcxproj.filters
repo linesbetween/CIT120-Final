@@ -38,9 +38,6 @@
     <Text Include="AprilData.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="DailySpend.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MoneyTrackerMain.cpp">

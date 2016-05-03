@@ -73,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="AprilData.txt" />
-    <Text Include="DailySpend.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MoneyTrackerMain.cpp" />

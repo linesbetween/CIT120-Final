@@ -32,9 +32,13 @@ void main(){
 		"MayData.txt", "JuneData.txt", "JulyData.txt", "AuguestData.txt", "SeptemberData.txt", "OctoberData.txt",
 		"NovemberData.txt", "DecemberData.txt" };
 
+	//controller 
+	bool exit = false;
 	int choice;
+
+	//intermedia 
 	int currentMonth, currentDay;
-	int entryDate;
+	int entryDate, entryCode;
 	double entryAmount;
 	double budget, currentBalance, currentTotalSpend;
 	int numOfEntries;
@@ -61,10 +65,10 @@ void main(){
 	///////////////////UI //////////////////////////////////////////////////
 
 	printCenterLine("Welcom to your money tracker \n", MAX_LENGTH);
-	printCenterLine("May I know what month this is (Input numberice month #) ?\n", MAX_LENGTH);
+	printCenterLine("May I know what month this is (Input numberice month #) ?", MAX_LENGTH);
 	for (int i = 0; i < 12; ++i){
 		if (i % 6 == 0)
-			cout << "\n";
+			cout << "\n\t";
 		cout << i + 1 << " " << MONTH_NAME[i] << ", ";		
 	}
 	cout << "\n";
@@ -104,26 +108,30 @@ void main(){
 		
 	}
 
-	dispMainMenu();
-	choice = getIntRange(1, 6);
+	while (exit == false){
+		dispMainMenu();
+		choice = getIntRange(1, 6);
 
+		switch (choice)
+		{
+		case 1: getNewEntry(currentMonth, entryDate, entryCode, entryAmount);
+				addEntry(dayArr, cataCodeArr, amountArr, numOfEntries, CAP, entryDate, entryCode, entryAmount);
+				break;
 
+		case 2: changeBudget(budget, getNewBugdet()); break;
 
-
-
-
-
-
-
-
-
-
-
-
-	cout << "\n\n";
-	system("pause");
-}
-
-void mainMenu(){
+		case 3: break;
+		case 4: break;
+		case 5: break;
+		case 6: break;
+		default:
+			break;
+		}
+		
+		cout << "\nPress ENTER to continue";
+		cin.get();
+		system("cls");
+	}
 	
 }
+

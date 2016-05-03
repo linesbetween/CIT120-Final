@@ -15,6 +15,11 @@ using namespace std;
 // add user input entry into parallel arrays
 void addEntry(int dayArr[], int cataCodeArr[], double amountArr[], int& actualSize, int CAP, int day, int code, double amount);
 
+void changeBudget(double& oldB, double newB){
+	oldB = newB;
+}
+
+// set daily spending to 0 when start a new month
 void initDailySum(double dailySumArr[], int numOfDays);
 
 // calcualte for all elements the whole dailySumArr
