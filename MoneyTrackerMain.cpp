@@ -66,6 +66,7 @@ void main(){
 
 	printCenterLine("Welcom to your money tracker \n", MAX_LENGTH);
 	printCenterLine("May I know what month this is (Input numberice month #) ?", MAX_LENGTH);
+	printCenterLine("Only April (4) has data right now.", MAX_LENGTH);
 	for (int i = 0; i < 12; ++i){
 		if (i % 6 == 0)
 			cout << "\n\t";
@@ -116,12 +117,32 @@ void main(){
 		{
 		case 1: getNewEntry(currentMonth, entryDate, entryCode, entryAmount);
 				addEntry(dayArr, cataCodeArr, amountArr, numOfEntries, CAP, entryDate, entryCode, entryAmount);
+				// refresh running data
+				initDailySum(dailySumArr, MAX_DAYS_IN_MONTH);
+				calcDailySum(dayArr, amountArr, numOfEntries, dailySumArr, MAX_DAYS_IN_MONTH);
+				currentTotalSpend = calcTotalSpending(dailySumArr, MAX_DAYS_IN_MONTH);
+				currentBalance = budget - currentTotalSpend;
 				break;
 
-		case 2: changeBudget(budget, getNewBugdet()); break;
+		case 2: changeBudget(budget, getNewBugdet()); 
+				currentBalance = budget - currentTotalSpend; 
+				break;
 
-		case 3: break;
-		case 4: break;
+		case 3: printMonthlyCalendar(currentMonth, dailySumArr); 
+				cout << "\n"
+					<< "Budget: " << budget << "\n"
+					<< "Balance: " << currentBalance << "\n\n";
+				break;
+
+		case 4: printMonthlyCalendar(currentMonth, dailySumArr);
+				cout << "\n"
+				<< "Budget: " << budget << "\n"
+				<< "Balance: " << currentBalance << "\n\n";
+				initCataSum(catagorySumArr, NUM_OF_CATAGORY);
+				calcCataSum(cataCodeArr, amountArr, numOfEntries, catagorySumArr, NUM_OF_CATAGORY);
+				printHistogramH(catagorySumArr, NUM_OF_CATAGORY, 10,"$", "Type");
+				printHistogramH(dailySumArr, NUM_OF_DAYS_MONTH[currentMonth - 1], 5 ,"$", "Date");
+				break;
 		case 5: break;
 		case 6: break;
 		default:

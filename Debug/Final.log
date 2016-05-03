@@ -1,11 +1,10 @@
-﻿Build started 5/2/2016 11:15:37 PM.
+﻿Build started 5/2/2016 11:46:21 PM.
      1>Project "C:\Users\Fei\Documents\Courses\CIT120\Final\Final.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt MoneyTrackerMain.cpp
          MoneyTrackerMain.cpp
      1>c:\users\fei\documents\courses\cit120\final\moneytrackermain.cpp(24): warning C4101: 'monthBudget' : unreferenced local variable
      1>c:\users\fei\documents\courses\cit120\final\moneytrackermain.cpp(45): warning C4101: 'firstDayOfMonthYearIndex' : unreferenced local variable
-     1>c:\users\fei\documents\courses\cit120\final\moneytrackermain.cpp(50): warning C4101: 'catagorySumArr' : unreferenced local variable
      1>c:\users\fei\documents\courses\cit120\final\moneytrackermain.cpp(28): warning C4101: 'dailySpendInYear' : unreferenced local variable
      1>c:\users\fei\documents\courses\cit120\final\moneytrackermain.cpp(40): warning C4101: 'currentDay' : unreferenced local variable
        Link:
@@ -15,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.79
+Time Elapsed 00:00:00.73

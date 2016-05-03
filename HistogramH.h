@@ -31,7 +31,7 @@ void printHistogramH(double xArr[], int sizeX, double xUnit, string xLabel, stri
 		 << setw(4) << left << "";;
 	for (int i = 0; i <= maxX / xUnit + 1; ++i) 
 		cout << "|";
-	cout << "\n";
+	cout << xLabel<<"\n";
 
 	// print histogram & y axis
 	for (int j = 0; j < sizeX; ++j){
@@ -42,6 +42,8 @@ void printHistogramH(double xArr[], int sizeX, double xUnit, string xLabel, stri
 		cout << "\n"<<setw(5)<<right<<"|"<<"\n";
 	}
 	
+	cout << yLabel 
+		 << "\n\n";
 }
 
 double findMax(double xArr[], int xSize){

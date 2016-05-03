@@ -46,16 +46,16 @@ void dispMainMenu(){
 
 //Choice 1 add entry to day in current month
 void getNewEntry(int month, int& day, int& code, double& amount){
-	cout << "Please input date ";
+	cout << "\nPlease input date ";
 	day = getIntRange(1, NUM_OF_DAYS_MONTH[month - 1]);
 	cout
-		<< "Please input code (1-4) of spending type \n"
+		<< "\nPlease input code (1-4) of spending type \n"
 		<< "1. Daily expense: like food, transportation \n"
 		<< "2. Occasional spending: like social, hobby, purchase  \n"
-		<< "3. Fixed bills: like rent, mortgage, utility \n "
+		<< "3. Fixed bills: like rent, mortgage, utility \n"
 		<< "4. Investment: like stock, education, childcare \n";
 	code = getIntRange(1, 4);
-	cout << "Please input amount "; 
+	cout << "\nPlease input amount "; 
 	amount = getIntGreater(0); // no limit here but for better report display, please keep under 500
 }
 
@@ -64,5 +64,9 @@ double getNewBugdet(){
 	cout << "\nWhat's the new budget? ";
 	return getDbGreater(0);
 }
+
+//Choice 6 save & exit
+
+
 
 #endif

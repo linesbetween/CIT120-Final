@@ -19,7 +19,7 @@ void writeDailySpend(fstream& file, const double dailySpend[], int size); //TODO
 
 //file exists
 int loadMonthData(fstream& file, double &budget, int day[], int cataCode[], double amount[], int arraySize){
-	int actualSize;
+	int actualSize = 0;
 
 	file >> budget;
 	for (int i = 0; i < arraySize && !file.fail(); ++i){ //TODO Too many entrie error file not exist error
